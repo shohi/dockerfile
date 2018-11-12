@@ -1,7 +1,6 @@
 FROM golang:1.11.2 AS intermediate
 LABEL maintainer="Xiaofei Wang <xiaofei.wang@thistech.com>"
 
-
 ENV GOBIN=$GOPATH/bin
 
 RUN go get github.com/nats-io/go-nats-streaming && \
@@ -19,7 +18,7 @@ RUN go get github.com/nats-io/go-nats-streaming && \
     go install github.com/nats-io/go-nats-streaming/examples/stan-pub && \
     go install github.com/nats-io/go-nats-streaming/examples/stan-sub
 
-
+# final stage
 FROM ubuntu:18.10 as builder
 
 # install curl and vim
@@ -40,7 +39,6 @@ COPY --from=intermediate /go/bin/nats-rply /app/nats-rply
 COPY --from=intermediate /go/bin/stan-bench /app/stan-bench
 COPY --from=intermediate /go/bin/stan-pub /app/stan-pub
 COPY --from=intermediate /go/bin/stan-sub /app/stan-sub
-
 
 WORKDIR /app
 
