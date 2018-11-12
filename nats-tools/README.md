@@ -6,7 +6,7 @@ Dockerfile of tools for NATS and NATS streaming server.
 ## usage
 
 ```
-docker run --rm -it shohik/nats-tools:0.1.0 bash
+docker run --rm -it shohik/nats-tools:latest bash
 ```
 
 
