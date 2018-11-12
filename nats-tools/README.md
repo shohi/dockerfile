@@ -1,4 +1,4 @@
-# nats-tool
+# nats-tools
 
 Dockerfile of tools for NATS and NATS streaming server.
 
