@@ -1,14 +1,12 @@
 # nats-tool
 
-Dockerfile for tools for NATS and NATS streaming server.
+Dockerfile of tools for NATS and NATS streaming server.
 
 
 ## usage
 
 ```
-
 docker run --rm -it shohik/nats-tools:0.1.0 bash
-
 ```
 
 
