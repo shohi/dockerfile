@@ -1,5 +1,5 @@
 FROM golang:1.11.2 AS intermediate
-LABEL maintainer="Shohi Wang<oshohi@gmail>"
+LABEL maintainer="Shohi Wang<oshohi@gmail.com>"
 
 ENV GOBIN=$GOPATH/bin
 
