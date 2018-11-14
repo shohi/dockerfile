@@ -1,5 +1,5 @@
 FROM golang:1.11.2 AS intermediate
-LABEL maintainer="Xiaofei Wang <xiaofei.wang@thistech.com>"
+LABEL maintainer="Shohi Wang<oshohi@gmail>"
 
 ENV GOBIN=$GOPATH/bin
 
@@ -35,7 +35,7 @@ COPY --from=intermediate /go/bin/nats-qsub /app/nats-qsub
 COPY --from=intermediate /go/bin/nats-req /app/nats-req
 COPY --from=intermediate /go/bin/nats-rply /app/nats-rply
 
-# copy tools fro nats streaming server
+# copy tools for nats streaming server
 COPY --from=intermediate /go/bin/stan-bench /app/stan-bench
 COPY --from=intermediate /go/bin/stan-pub /app/stan-pub
 COPY --from=intermediate /go/bin/stan-sub /app/stan-sub
