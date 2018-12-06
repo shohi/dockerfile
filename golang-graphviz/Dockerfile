@@ -9,7 +9,7 @@ RUN apt-get update && \
 
 
 # install latest go
-ENV GO_INSTALL_VERSION 1.11.1
+ENV GO_INSTALL_VERSION 1.11.2
 RUN cd /tmp && \
     curl -OL https://dl.google.com/go/go$GO_INSTALL_VERSION.linux-amd64.tar.gz && \
     tar -xf go$GO_INSTALL_VERSION.linux-amd64.tar.gz && \
