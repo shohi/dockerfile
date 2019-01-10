@@ -1,4 +1,4 @@
-FROM golang:1.11.2 AS intermediate
+FROM golang:1.11.4 AS intermediate
 LABEL maintainer="Shohi Wang<oshohi@gmail.com>"
 
 ENV GOBIN=$GOPATH/bin
@@ -24,7 +24,9 @@ FROM ubuntu:18.10 as builder
 # install curl and vim
 RUN apt-get update && \
     apt-get install -y curl && \
-    apt-get install -y vim
+    apt-get install -y vim && \
+    apt-get install -y tree && \
+    apt-get install -y iftop
 
 # copy tools for nats server
 COPY --from=intermediate /go/bin/nats-bench /app/nats-bench
