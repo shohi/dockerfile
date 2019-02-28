@@ -6,7 +6,7 @@ RUN go get github.com/nats-io/gnatsd && \
     cd $GOPATH/src/github.com/nats-io/gnatsd && \
     git pull --all && \
     git checkout tags/v1.4.1 -b v1.4.1 && \
-    go build -o gnatsd main.go
+    CGO_ENABLED=0 go build -v -a -tags netgo -installsuffix netgo -ldflags "-s -w -X github.com/nats-io/gnatsd/server.gitCommit=`git rev-parse --short HEAD`"
 
 # final stage
 FROM ubuntu:18.10 as builder
