@@ -9,7 +9,8 @@ RUN apt-get update && \
     apt-get install -y iftop
 
 # add nats-streaming-server
-ADD ./resources/nats-streaming-server.v0.12.1 /nats-streaming-server
+ARG STAN_VERSION=0.12.1_1
+ADD ./resources/nats-streaming-server.v${STAN_VERSION} /nats-streaming-server
 
 RUN chmod +x /nats-streaming-server
 

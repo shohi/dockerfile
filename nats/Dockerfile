@@ -1,11 +1,14 @@
-FROM golang:1.11.5 AS intermediate
+ARG GO_VERSION=1.11.5
+FROM golang:${GO_VERSION} AS intermediate
+
+ARG NATS_VERSION=1.4.1
 
 ENV GOBIN=$GOPATH/bin
 
 RUN go get github.com/nats-io/gnatsd && \
     cd $GOPATH/src/github.com/nats-io/gnatsd && \
     git pull --all && \
-    git checkout tags/v1.4.1 -b v1.4.1 && \
+    git checkout tags/v${NATS_VERSION} -b v${NATS_VERSION} && \
     CGO_ENABLED=0 go build -v -a -tags netgo -installsuffix netgo -ldflags "-s -w -X github.com/nats-io/gnatsd/server.gitCommit=`git rev-parse --short HEAD`"
 
 # final stage

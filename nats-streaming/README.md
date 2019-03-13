@@ -5,7 +5,7 @@ Dockerfile of custom NATS Streaming.
 ## usage
 
 ```
-docker run --rm -it shohik/nats-streaming:0.12.1 bash
+docker run --rm -it shohik/nats-streaming:0.12.1_1 bash
 ```
 
 ## references
