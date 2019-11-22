@@ -1,15 +1,20 @@
 #!/usr/bin/env bash -x
 
+# build docker image
 function dockerize() {
-  NATS_VERSION=1.4.1
-  GO_VERSION=1.12
+  local ver=${1:-"0.1.0"}
+  local gover=${2:-"1.13"}
 
   docker build \
-    -t shohik/nats:${NATS_VERSION} \
-    --build-arg NATS_VERSION=${NATS_VERSION} \
-    --build-arg GO_VERSION=${GO_VERSION} \
+    -t shohik/ethr:${ver} \
+    --build-arg GO_VERSION=${gover} \
     .
+}
 
+# push docker image to docker hub
+function deploy() {
+  local ver=${1:-"0.1.0"}
+  docker push shohik/ethr:${ver}
 }
 
 #######################################################################
@@ -22,6 +27,10 @@ function main() {
     "docker")
       shift
       dockerize $@
+      ;;
+    "deploy")
+      shift
+      deploy $@
       ;;
     *)
       echo "Unknown command"
